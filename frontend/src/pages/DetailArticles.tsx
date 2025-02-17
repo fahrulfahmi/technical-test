@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { articleApi, commentApi } from "../api/apiService";
 
 const ArticleDetail = () => {
-  const { id } = useParams(); // ID dari URL
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [article, setArticle] = useState<any>(null);
@@ -95,7 +95,6 @@ const ArticleDetail = () => {
             Back to Home
           </button>
 
-          {/* Komentar */}
           <div className="mt-6">
             <h2 className="text-2xl font-semibold mb-4">Comments</h2>
             <div className="mb-4">

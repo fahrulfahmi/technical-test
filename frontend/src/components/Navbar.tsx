@@ -6,10 +6,8 @@ const Navbar = () => {
 
   return (
     <nav className="bg-gray-900 text-white p-4 flex justify-between items-center">
-      {/* Logo */}
       <Link to="/" className="text-xl font-bold px-4">Artichel Travel</Link>
       
-      {/* Hamburger Icon */}
       <button
         className="lg:hidden text-2xl"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -17,7 +15,6 @@ const Navbar = () => {
         ☰
       </button>
 
-      {/* Menu Links */}
       <div
         className={`mr-10 lg:flex flex-grow items-center justify-end space-x-4 ${isMenuOpen ? "block" : "hidden"} lg:block`}
       >

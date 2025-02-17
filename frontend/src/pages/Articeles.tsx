@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { articleApi, categoryApi } from "../api/apiService"; // Pastikan API sudah diimport
+import { articleApi, categoryApi } from "../api/apiService";
 
 const AddArticle = () => {
   const [title, setTitle] = useState("");
@@ -23,7 +23,7 @@ const AddArticle = () => {
       const data = await categoryApi.getAllCategories();
       console.log("Categories fetched:", data);
       if (data) {
-        setCategories(data); // Pastikan data kategori sesuai
+        setCategories(data);
       } else {
         setCategories([]);
       }
@@ -39,44 +39,11 @@ const AddArticle = () => {
     }
   };
 
-  //   const handleSubmit = async (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     setLoading(true);
-  //     setError(null);
-
-  //     console.log('Selected Category ID:', categoryId);
-
-  //     const formData = new FormData();
-  //     formData.append("title", title);
-  //     formData.append("content", content);
-  //     // formData.append("category_id", categoryId);
-  //     formData.append("category_id", categoryId.toString());
-
-  //   if (image) {  // Pastikan ini dibungkus dengan {}
-  //     console.log('Image:', image);
-  //     formData.append("image", image);
-  //   } else {
-  //     console.error("Image is missing");
-  //     setError("Image is required");
-  //     setLoading(false);
-  //     return;
-  //   }
-  //   try {
-  //     await articleApi.createArticle(formData);
-  //     navigate("/"); // Redirect ke home setelah sukses
-  //   } catch (err) {
-  //     setError("Gagal menambahkan artikel");
-  //     console.error(err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
-    // Simple form validation
     if (!title || !content || !categoryId || !image) {
       setError("Please fill all fields and add an image.");
       setLoading(false);
@@ -88,11 +55,11 @@ const AddArticle = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    formData.append("category_id", categoryId.toString()); // Ensure categoryId is converted to string
+    formData.append("category_id", categoryId.toString()); 
 
     if (image) {
       console.log("Image:", image);
-      formData.append("image", image); // Append the image to FormData
+      formData.append("image", image);
     } else {
       console.error("Image is missing");
       setError("Image is required");
@@ -101,8 +68,8 @@ const AddArticle = () => {
     }
 
     try {
-      await articleApi.createArticle(formData); // Send formData to API
-      navigate("/"); // Redirect to homepage after success
+      await articleApi.createArticle(formData); 
+      navigate("/"); 
     } catch (err) {
       setError("Failed to add article.");
       console.error(err);
@@ -141,19 +108,6 @@ const AddArticle = () => {
 
         <div className="mb-4">
           <label className="block text-gray-700">Category</label>
-          {/* <select
-            value={categoryId}
-            onChange={(e) => setCategoryId(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded-lg"
-          >
-            <option value="">Select Category</option>
-            {categories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select> */}
           <select
             value={categoryId}
             onChange={(e) => setCategoryId(e.target.value)}
@@ -163,7 +117,7 @@ const AddArticle = () => {
             <option value="">Select Category</option>
             {categories.map((category) => (
               <option key={category.id} value={category.id}>
-                {category.name_category} {/* Menampilkan name_category */}
+                {category.name_category} 
               </option>
             ))}
           </select>

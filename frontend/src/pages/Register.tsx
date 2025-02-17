@@ -47,7 +47,7 @@ const Register = () => {
   return (
     <div
       className="flex justify-center items-center min-h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${bgregister})` }} // Set background image
+      style={{ backgroundImage: `url(${bgregister})` }}
     >
       <ToastContainer />
       <div className="bg-white bg-opacity-80 p-8 rounded-lg shadow-lg w-96">

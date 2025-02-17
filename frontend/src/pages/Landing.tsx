@@ -1,6 +1,5 @@
 import React from 'react';
-import backgroundImage from '../assets/bg.jpg'; // Sesuaikan dengan nama file gambar Anda
-
+import backgroundImage from '../assets/bg.jpg';
 const Landing = () => {
   return (
     <div

@@ -2,7 +2,6 @@ import axios from "axios";
 
 const API_BASE_URL = "http://localhost:5000/api";
 
-// Interface untuk data pengguna dan artikel
 interface UserData {
   username?: string;
   email: string;
@@ -23,7 +22,6 @@ interface CommentData {
 
 
 
-// Utility untuk mendapatkan token dari localStorage
 const getToken = () => {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -33,7 +31,6 @@ const getToken = () => {
   return token;
 };
 
-// Menggunakan axios untuk mengambil data pengguna
 export const getUser = async () => {
   const token = getToken();
 
@@ -45,20 +42,18 @@ export const getUser = async () => {
       },
     });
 
-    return response.data; // Kembalikan data username & email
+    return response.data;
   } catch (error) {
     console.error("Gagal mengambil profil pengguna", error);
     throw new Error("Failed to fetch user data");
   }
 };
 
-// Fungsi untuk menangani error
 const handleError = (error: any) => {
   console.error("API Error:", error);
   throw error;
 };
 
-// API untuk autentikasi
 const authApi = {
   register: async (userData: UserData) => {
     try {
@@ -73,7 +68,6 @@ const authApi = {
       const response = await axios.post(`${API_BASE_URL}/auth/login`, userData);
       console.log("Login API Response:", response);
 
-      // Simpan token & user ke localStorage
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
 
@@ -84,7 +78,6 @@ const authApi = {
   },
 };
 
-// API untuk pengguna
 const userApi = {
   getProfile: async () => {
     const token = getToken();
@@ -99,7 +92,6 @@ const userApi = {
   },
 };
 
-// API untuk artikel
 const articleApi = {
   getAllArticles: async () => {
     const token = getToken();
@@ -142,7 +134,6 @@ const articleApi = {
           "Content-Type": "multipart/form-data",
         },
       });
-      // console.log('Response:', response);
       return response.data;
     } catch (error) {
       handleError(error);
@@ -185,7 +176,6 @@ const articleApi = {
   },
 };
 
-// API untuk kategori
 const categoryApi = {
   getAllCategories: async () => {
     const token = getToken();
@@ -199,16 +189,6 @@ const categoryApi = {
     }
   },
 };
-
-//kometar
-
-// const getToken = () => {
-//   const token = localStorage.getItem("token");
-//   if (!token) {
-//     throw new Error("Token tidak ditemukan!");
-//   }
-//   return token;
-// };
 
 const commentApi = {
   getComments: async (articleId: string) => {
@@ -249,5 +229,4 @@ const commentApi = {
 };
 
 
-// Mengekspor semua API
 export { authApi, userApi, articleApi, categoryApi, commentApi };

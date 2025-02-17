@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { articleApi } from "../api/apiService"; // Import API artikel
+import { articleApi } from "../api/apiService";
 
 const Home = () => {
   const [articles, setArticles] = useState<any[]>([]);
@@ -71,7 +71,7 @@ const Home = () => {
                 </p>
                 <div className="flex justify-between">
                   <Link
-                    to={`/articles/${article.id}`} // Gunakan Link agar tidak me-refresh halaman
+                    to={`/articles/${article.id}`} 
                     className="px-3 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-700"
                   >
                     Read more

@@ -32,7 +32,6 @@ const App = () => {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar berubah sesuai status login */}
         {isAuthenticated ? <NavbarHome onLogout={handleLogout} /> : <Navbar />}
 
         <div className="flex-grow">

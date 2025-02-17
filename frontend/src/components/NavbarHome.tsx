@@ -9,20 +9,19 @@ interface NavbarHomeProps {
 
 const NavbarHome: React.FC<NavbarHomeProps> = ({ onLogout }) => {
   const [username, setUsername] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);  // Menambahkan state loading
+  const [loading, setLoading] = useState<boolean>(true); 
   const navigate = useNavigate();
 
-  // Mengambil profil pengguna setelah login
   useEffect(() => {
     const fetchUser = async () => {
-      setLoading(true);  // Memulai loading saat pengambilan data
+      setLoading(true);  
       try {
-        const userData = await getUser();  // Memanggil API untuk mendapatkan user
-        setUsername(userData.username);  // Menyimpan username dari API
+        const userData = await getUser();  
+        setUsername(userData.username);  
       } catch (error) {
         console.error("Gagal mengambil profil pengguna", error);
       } finally {
-        setLoading(false);  // Menghentikan loading setelah data diambil
+        setLoading(false);  
       }
     };
 
@@ -42,14 +41,13 @@ const NavbarHome: React.FC<NavbarHomeProps> = ({ onLogout }) => {
        <Link to="/home" className="text-xl font-bold">
         Artichel Travel
       </Link>
-      {/* <h1 className="text-xl font-bold">Artichel Travel</h1> */}
       <div className="flex items-center gap-4">
         {loading ? (
-          <span>Loading...</span>  // Menampilkan loading saat data user masih diambil
+          <span>Loading...</span>
         ) : username ? (
-          <span className="font-semibold"> {username}</span>  // Menampilkan username
+          <span className="font-semibold"> {username}</span>
         ) : (
-          <span>User tidak ditemukan</span>  // Menangani kondisi jika username tidak ada
+          <span>User tidak ditemukan</span> 
         )}
         <button
           onClick={handleLogout}
